@@ -18,7 +18,7 @@ class Point{
 		y = ny;
 	}
 	
-	/*
+	///*
     //Redefinición (overriden) de equals para la clase Point
 	public boolean equals(Object Ob){
 		if(Ob instanceof Point){ //Verificamos que Ob sea un objeto de Point
@@ -28,14 +28,13 @@ class Point{
 		}
 		return false;
 	}
-	*/
-	
-	/*
+	//*/
+	///*
 	//Redefinición de toString
 	public String toString(){
 		return "[X=" + x + ", " + "Y=" + y + "]";
 	}
-	*/
+	///*/
 	
 }
 
@@ -69,6 +68,10 @@ public class Puntos{
 		System.out.println("El valor hash para A es: " + A.hashCode());
 		System.out.println("El valor hash para B es: " + B.hashCode());
 		
-		
+		//El operador == compara las referencias 
+		if(A==B)
+			System.out.println("A==B: true");
+		else 
+			System.out.println("A==B: false");
 	}
 }

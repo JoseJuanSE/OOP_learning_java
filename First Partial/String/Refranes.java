@@ -21,7 +21,3 @@ public class Refranes{
 		System.out.println(grupo[val]);
 	}
 }
-
-
-
-
