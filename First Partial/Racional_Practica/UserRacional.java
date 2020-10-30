@@ -3,6 +3,23 @@ import java.util.Scanner;
 import javax.swing.JOptionPane;
 
 class UserRacional{
+    public static Racional pedirres(){
+        int num,den;
+        Racional c = new Racional();
+        Scanner leer = new Scanner(System.in);
+        System.out.println("\nIntroduce tu respuesta: ");
+        System.out.print("\nIntroduce el numerador: ");
+        num = leer.nextInt();
+        do{
+            System.out.print("\nIntroduce el denominador: ");
+            den = leer.nextInt();
+            if(den==0)
+                System.out.println("Denominador invalido (!=0)");
+        }while(den==0);
+        c.establecer(num, den);
+        leer.close();
+        return c;
+    }
     public static int menu()throws IOException {
         int op;
         //Runtime.getRuntime().exec("cls"); windows
@@ -24,24 +41,21 @@ class UserRacional{
                 Runtime.getRuntime().exec("clear"); //linux
                 System.out.println("\n\n Opción no valida, ¡intente otra vez!");
             }
+            EntradaDeDato.close();
         } while (op<1 || op>5);
         return op;
     }
     public  static void sum(Racional a, Racional b){
         System.out.println("¿Cuál es la suma de los siguientes racionales?: ");
         a.imprimir(); System.out.print(" + "); b.imprimir();
-        int num,den;
-        Racional c = new Racional();
+
         Racional correcta = new Racional();
-        Scanner leer = new Scanner(System.in);
-        System.out.print("\nIntroduce tu respuesta: ");
-        System.out.print("\nIntroduce el numerador: ");
-        num = leer.nextInt();
-        System.out.print("\nIntroduce el denominador: ");
-        den = leer.nextInt();
-        correcta =;
-        c.establecer(num, den);
-        if(c.Esigual())
+        Racional resp = pedirres();
+        
+        correcta.suma(a, b);
+        if(resp.Esigual(correcta)){
+            
+        }
     }
     public  static void substration(Racional a, Racional b){
 

@@ -21,6 +21,9 @@ class Racional{
     public void random(){
         establecer((int) (Math.random()*10),(int) (Math.random()*10));
     }
+    public int abs(int a){
+        return a<0?-1*a:a;
+    }
     //algoritmo de erastotenes
     public int gcd(int a,int b){
         if(b==0)return a;
@@ -28,7 +31,7 @@ class Racional{
     }
     public void reduce(){
         if(this.num==0)return ;
-        int gcd = gcd(this.den,this.num);
+        int gcd = gcd(abs(this.den),abs(this.num));
         this.den/=gcd;
         this.num/=gcd;
     }
@@ -57,29 +60,50 @@ class Racional{
     }
     //---------------resta----------------
     public Racional res(Racional b){
-        den *= b.den;
-        num *= b.num;
+        int den = this.den * b.den;
+        int num1 = this.num*b.den; 
+        int num2 = this.den*b.num;
+        this.num = num1-num2;
+        this.den = den;
+        this.reduce();
         return this;
     }
     public void res(Racional A,Racional B){
-        this.den = A.den * B.den;
-        this.num = A.num * B.num;
+        int den = A.den * B.den;
+        int num1 = A.num*B.den; 
+        int num2 = A.den*B.num;
+        this.num = num1-num2;
+        this.den = den;
         this.reduce();
     }
     //---------------suma----------------
-    public Racional sum(Racional b){
-        
-
+    public Racional suma(Racional b){
+        int den = this.den * b.den;
+        int num1 = this.num*b.den; 
+        int num2 = this.den*b.num;
+        this.num = num1+num2;
+        this.den = den;
         this.reduce();
         return this;
     }
-    public void sum(Racional A,Racional B){
-        this.den = A.den + B.den;
-        this.num = A.num + B.num;
+    public void suma(Racional A,Racional B){
+        int den = A.den * B.den;
+        int num1 = A.num*B.den; 
+        int num2 = A.den*B.num;
+        this.num = num1+num2;
+        this.den = den;
         this.reduce();
     }
     
     public void imprimir(){
         System.out.println("["+num+","+den+"]");
     }
+
+    public boolean Esigual(Racional correcta){
+        Racional aux = new Racional();
+        aux = this;
+        aux.reduce();
+        correcta.reduce();
+        return (aux.num == correcta.num && aux.den == correcta.den);
+    } 
 }
