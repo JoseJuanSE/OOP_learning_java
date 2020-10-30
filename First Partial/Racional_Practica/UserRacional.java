@@ -30,7 +30,8 @@ class UserRacional{
             System.out.println("2.- Resta");
             System.out.println("3.- Multiplicación");
             System.out.println("4.- Division");
-            System.out.println("5.- Salir");
+            System.out.println("5.- Operacion aleatoria");
+            System.out.println("6.- Salir");
             System.out.print("Ingresa la operacion que deseas realizar: ");
             Scanner EntradaDeDato = new Scanner(System.in);
             
@@ -54,17 +55,15 @@ class UserRacional{
         
         correcta.suma(a, b);
         if(resp.Esigual(correcta)){
-            
+            System.out.println("Felicidades respuesta correcta :)");
+            if(!resp.essimp()){
+                System.out.print("PD: tu respuesta pudo haberse simplificado como: ");
+                resp.reduce();
+                resp.imprimir();
+            }
+        }else{
+
         }
-    }
-    public  static void substration(Racional a, Racional b){
-
-    }
-    public  static void multiplication(Racional a, Racional b){
-
-    }
-    public  static void division(Racional a, Racional b){
-
     }
     public static void main(String [] args)throws IOException {
         boolean a=true;
@@ -75,6 +74,10 @@ class UserRacional{
             rb.random();
 
             int op = menu();
+            if(op==5){
+                op = ((int) (Math.random()*10)%5);
+                if(op==0)op++;
+            }
             switch(op){
                 case 1:
                     sum(ra, rb);
@@ -84,7 +87,7 @@ class UserRacional{
                     multiplication(ra, rb);
                 case 4:
                     division(ra, rb);
-                case 5:
+                case 6:
                     break;
             }
         }
@@ -95,22 +98,25 @@ class UserRacional{
 Objetivo.
 Llevar a cabo la implementación de conceptos tales como: encapsulamiento, clases
 (constructores, métodos, atributos, formas de acceso), objetos, y modelación UML, de las
-unidades I y II del plan de la UA para POO.
+unidades I y II del plan de la UA para POO. --listo--
 Desarrollo.
 Diseñar e implementar un programa que sirva de apoyo en el aprendizaje de operaciones
 con números racionales para estudiantes de la unidad de aprendizaje matemáticas del nivel
-básico.
+básico. --listo--
 
 El programa deberá realizar lo siguiente:
 a) Desplegar un menú de opciones en donde aparezcan todas las operaciones con
 números racionales que pueden ser realizadas por el programa (suma, resta,
 división, multiplicación). --listo--
 
-b) Desplegar dos números racionales generados aleatoriamente por el programa.
+b) Desplegar dos números racionales generados aleatoriamente por el programa. --listo--
+
 c) Desplegar la operación que el usuario debe resolver, esto es, los números racionales
 generados aleatoriamente y la operación a realizar. La operación también debe ser
-generada aleatoriamente.
-d) Invitar al usuario a que realice la operación.
+generada aleatoriamente.--listo--
+
+d) Invitar al usuario a que realice la operación.--listo--
+
 e) Una vez que el usuario haya hecho sus cálculos, se deberá solicitar que ingrese su
 resultado por el teclado, es decir, el programa deberá leer el valor correspondiente
 al numerador y el valor correspondiente al denominador.

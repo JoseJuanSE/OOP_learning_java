@@ -106,4 +106,7 @@ class Racional{
         correcta.reduce();
         return (aux.num == correcta.num && aux.den == correcta.den);
     } 
+    public boolean essimp(){
+        return gcd(num,den)==1;
+    }
 }
