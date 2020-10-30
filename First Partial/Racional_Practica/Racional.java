@@ -96,7 +96,7 @@ class Racional{
     }
     
     public void imprimir(){
-        System.out.println("["+num+","+den+"]");
+        System.out.print("["+num+","+den+"]");
     }
 
     public boolean Esigual(Racional correcta){
@@ -107,6 +107,11 @@ class Racional{
         return (aux.num == correcta.num && aux.den == correcta.den);
     } 
     public boolean essimp(){
-        return gcd(num,den)==1;
+        if(num==0)return true;
+        int g=gcd(num,den);
+        System.out.println(g);
+        if(g==1)return true;
+        return false;
+        //return gcd(num,den)==1;
     }
 }
