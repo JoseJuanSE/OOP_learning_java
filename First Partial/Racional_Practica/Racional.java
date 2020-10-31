@@ -100,8 +100,9 @@ class Racional{
     }
 
     public boolean Esigual(Racional correcta){
-        double a = num/den;
-        double b = correcta.num / correcta.den;
+        double a = (double)num/(double)den;
+        double b = (double)correcta.num / (double)correcta.den;
+        System.out.println(a+" "+b);
         return a==b;
     } 
     public boolean essimp(){
