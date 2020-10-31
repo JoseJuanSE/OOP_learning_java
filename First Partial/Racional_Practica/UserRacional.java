@@ -57,11 +57,8 @@ class UserRacional{
             r=resp.Esigual(correcta);
             if(r){ 
                 System.out.println("Felicidades respuesta correcta :)");
-                resp.imprimir();
-                resp.reduce();
-                resp.imprimir();
                 if(!resp.essimp()){
-                    System.out.print("PD: tu respuesta pudo haberse simplificado como: ");
+                    System.out.print("PD: tu respuesta pudo haber sido simplificada como: ");
                     resp.reduce();
                     resp.imprimir();
                 }
@@ -82,7 +79,7 @@ class UserRacional{
             if(r){
                 System.out.println("Felicidades respuesta correcta :)");
                 if(!resp.essimp()){
-                    System.out.print("PD: tu respuesta pudo haberse simplificado como: ");
+                    System.out.print("PD: tu respuesta pudo haber sido simplificada como: ");
                     resp.reduce();
                     resp.imprimir();
                 }
@@ -103,7 +100,7 @@ class UserRacional{
             if(r){
                 System.out.println("Felicidades respuesta correcta :)");
                 if(!resp.essimp()){
-                    System.out.print("PD: tu respuesta pudo haberse simplificado como: ");
+                    System.out.print("PD: tu respuesta pudo haber sido simplificada como: ");
                     resp.reduce();
                     resp.imprimir();
                 }
@@ -124,7 +121,7 @@ class UserRacional{
             if(r){
                 System.out.println("Felicidades respuesta correcta :)");
                 if(!resp.essimp()){
-                    System.out.print("PD: tu respuesta pudo haberse simplificado como: ");
+                    System.out.print("PD: tu respuesta pudo haber sido simplificada como: ");
                     resp.reduce();
                     resp.imprimir();
                 }

@@ -100,18 +100,11 @@ class Racional{
     }
 
     public boolean Esigual(Racional correcta){
-        Racional aux = new Racional();
-        aux = this;
-        aux.reduce();
-        correcta.reduce();
-        return (aux.num == correcta.num && aux.den == correcta.den);
+        double a = num/den;
+        double b = correcta.num / correcta.den;
+        return a==b;
     } 
     public boolean essimp(){
-        if(num==0)return true;
-        int g=gcd(num,den);
-        System.out.println(g);
-        if(g==1)return true;
-        return false;
-        //return gcd(num,den)==1;
+        return num==0 || gcd(abs(num),abs(den))==1;
     }
 }
