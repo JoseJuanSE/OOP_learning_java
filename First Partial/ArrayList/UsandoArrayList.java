@@ -12,7 +12,10 @@ public class UsandoArrayList{
         list.add("Quijote");
         list.add("Sancho");
 		list.add("Rocinante");
-		list.add("Rocinante");
+        list.add("Rocinante");
+        
+        System.out.println("The arraylist contains the following elements: "
+                + list);
         //Agrega el elemento en la posici�n 1 del arreglo
         list.add(1, "Pedro Paramo");
 

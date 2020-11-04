@@ -18,12 +18,12 @@ class Racional{
         else 
             this.den = den;
     }
-    public Racional mul(Racional b){
+    public Racional mult(Racional b){
         den *= b.den;
         num *= b.num;
         return this;
     }
-    public void mul(Racional A,Racional B){
+    public void mult(Racional A,Racional B){
         this.den = A.den * B.den;
         this.num = A.num * B.num;
     }
@@ -42,4 +42,9 @@ class Racional{
     public void imprimir(){
         System.out.println("["+num+","+den+"]");
     }
+    public boolean mayorQue(Racional R){
+		
+		return num*R.den > den*R.num; 
+		//return (double)(num/den)>(double)(R.num/R.den);	
+	}
 }
