@@ -1,7 +1,7 @@
 import java.util.*;
 
 public class UserRacional {
-   public static void main( String [ ] args) {
+    public static void main( String [ ] args) {
         Racional A, B; 
         A = new Racional( );      // A = 1/1
         B = new Racional(3, 4); // B = 3/4  
@@ -10,7 +10,7 @@ public class UserRacional {
         B.imprimir( );
         C.imprimir( );
         A.establecer(1,2);  // A = 1/2
-       // Imprimimos el valor modificado de A en pantalla: [ 1, 2 ]
+        // Imprimimos el valor modificado de A en pantalla: [ 1, 2 ]
         A.imprimir( );
 		A.mult(B);
 		A.mult(B.mult(C));
@@ -33,7 +33,7 @@ public class UserRacional {
 		boolean [] varBoolean = new boolean[3];
 		System.out.println("boolean 0: " + varBoolean[0]);
 		System.out.println("boolean 0: " + varBoolean[1]);
-	    
+		
 		long [] varLong = new long[3];
 		System.out.println("Entero largo 0: " + varLong[0]);
 		System.out.println("Entero largo 0: " + varLong[1]);	
@@ -59,7 +59,7 @@ public class UserRacional {
 		//Desplegamos valores usando for-each
 		System.out.println("\n\n-----Modificamos valores y usamos for-each");
 		for(Racional var: grupoA)
-		    var.imprimir();
+			var.imprimir();
 		
 		//Ahora vamos a generar un nuevo arreglo de objetos Racional, pero creados de forma aleatoria.
 		// Usaremos la clase Random y su método nextInt para generar enteros de forma aleatoria
@@ -69,7 +69,7 @@ public class UserRacional {
 		System.out.println("\n\n######## Generamos un arreglo Racional de forma aleatoria #########");
 		Random rand = new Random();
 		Racional [] grupoB = new Racional[10];
-	    
+		
 		int i, j, k;
 		for(i=0; i<grupoB.length; i++ ){
 			j = rand.nextInt(10);
@@ -88,7 +88,7 @@ public class UserRacional {
 		// El método equals tiene esta declaración: public boolean equals(Object O)
 		// Usemos el método equals y veamos el resultado
 
-      	System.out.println("\n\n------Probamos el metodo equals de la clase Object ---------");		
+		System.out.println("\n\n------Probamos el metodo equals de la clase Object ---------");		
 		Racional R1 = new Racional(2,3);
 		Racional R2 = new Racional(3,2);
 		boolean r = R1.equals(R2);
@@ -106,29 +106,29 @@ public class UserRacional {
 		Racional T = new Racional(1,6);
 		Racional U = new Racional(4,6);
 		Racional X = new Racional(3,4);
-	    Racional Y = new Racional(1,2);
+		Racional Y = new Racional(1,2);
 		Racional Z = new Racional(3,5);
 		//Uso de ArrayList con objetos de tipo Racional
 		ArrayList<Racional> grupo2 = new ArrayList<Racional>();
-	    System.out.println("Usando ArrayList de clase Racional");
-	    grupo2.add(T);
-	    grupo2.add(U);
-	    grupo2.add(X);
-	    grupo2.add(Y);
-	    grupo2.add(Z);
-	    
-	    System.out.println("Tamaño del ArrayList grupo2: " + grupo2.size());
-	    Racional aux;
-	    for( j=0; j<grupo2.size() ; j++){
-		       aux =  grupo2.get(j);
-		       aux.imprimir();
-	    }
-	    grupo2.remove(2);
-	    System.out.println("Despues del remove();");
-	    for( j=0; j<grupo2.size() ; j++){
-		       aux =  grupo2.get(j);
-		       aux.imprimir();
-	    }
+		System.out.println("Usando ArrayList de clase Racional");
+		grupo2.add(T);
+		grupo2.add(U);
+		grupo2.add(X);
+		grupo2.add(Y);
+		grupo2.add(Z);
+			
+		System.out.println("Tamaño del ArrayList grupo2: " + grupo2.size());
+		Racional aux;
+		for( j=0; j<grupo2.size() ; j++){
+			aux =  grupo2.get(j);
+			aux.imprimir();
+		}
+		grupo2.remove(2);
+		System.out.println("Despues del remove();");
+		for( j=0; j<grupo2.size() ; j++){
+			aux =  grupo2.get(j);
+			aux.imprimir();
+		}
 	
 	
 	System.out.println("Uso de for each: ");
