@@ -1,6 +1,47 @@
 import java.util.*;
 
 public class UserRacional {
+	
+	public static Racional Mayoren(Racional [] array){
+		//1) Obtener el Racional mayor de un arreglo de racionales estático 
+		Racional maxi = new Racional();
+		maxi.establecer(1, 100000000);
+		for(int i=0;i<array.length;i++){
+			if(!maxi.mayorQue(array[i]))
+				maxi = array[i];
+		}
+		return maxi;
+	}
+	public static Racional Mayoren(ArrayList<Racional> array){
+		//2) Obtener el Racionall mayor de un arreglo de racionales dinámico (ArrayList)
+		Racional maxi = new Racional();
+		maxi.establecer(1, 100000000);
+		for(Racional r:array){
+			if(!maxi.mayorQue(r))
+				maxi = r;
+		}
+		return maxi;
+	}
+	public static boolean Comp(Racional [] A,Racional [] B){
+		//3) Diseñar un método para comparar dos arreglos estáticos de tipo Racional: devuelve true si son iguales
+		if(A.length!=B.length)
+			return false;
+		for(int i=0;i<A.length;i++){
+			if(A[i]!=B[i])
+				return false;
+		}
+		return true;
+	}
+	public static boolean Comp(ArrayList<Racional> A, ArrayList<Racional> B){
+		//4) Diseñar un método para comparar dos arreglos dinámicos de tipo Racional: devolver true si son iguales.
+		if(A.size()!=B.size())
+			return false;
+		for(int i=0;i<A.size();i++){
+			if(A.get(i)!=B.get(i))
+				return false;
+		}
+		return true;
+	}
     public static void main( String [ ] args) {
         Racional A, B; 
         A = new Racional( );      // A = 1/1

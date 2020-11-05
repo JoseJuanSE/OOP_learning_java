@@ -43,8 +43,7 @@ class Racional{
         System.out.println("["+num+","+den+"]");
     }
     public boolean mayorQue(Racional R){
-		
-		return num*R.den > den*R.num; 
-		//return (double)(num/den)>(double)(R.num/R.den);	
+		//return num*R.den > den*R.num; 
+		return (double)(num/den)>(double)(R.num/R.den);	
 	}
 }
