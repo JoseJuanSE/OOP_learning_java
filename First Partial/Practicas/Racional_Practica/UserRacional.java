@@ -22,7 +22,7 @@ class UserRacional{
     public static int menu()throws IOException {
         int op;
         //Runtime.getRuntime().exec("cls"); //windows
-        Runtime.getRuntime().exec("clear"); //linux
+        //Runtime.getRuntime().exec("clear"); //linux
         Scanner EntradaDeDato = new Scanner(System.in);
         do {
             System.out.println("\n\t MENÚ: ");
@@ -37,8 +37,8 @@ class UserRacional{
             
             op = EntradaDeDato.nextInt();    
             if(op<1 || op>6){
-                //Runtime.getRuntime().exec("cls"); windows
-                Runtime.getRuntime().exec("clear"); //linux
+                //Runtime.getRuntime().exec("cls"); //windows
+                //Runtime.getRuntime().exec("clear"); //linux
                 System.out.println("\n\n Opción no valida, ¡intente otra vez!");
             }
             
@@ -136,8 +136,13 @@ class UserRacional{
         while(a){
             Racional ra = new Racional();
             Racional rb = new Racional();
+            ra.establecer(0,1);
+            //rb no puede ser 0 puesto que en division habria problemas
+            do{
+                rb.random();
+            }while(rb.Esigual(ra));
+            //asignamos valor verdadero a ra
             ra.random();
-            rb.random();
 
             int op = menu();
             if(op==5){
@@ -165,7 +170,7 @@ class UserRacional{
             enter.nextLine();
 
         }
-        System.out.println("Mensaje de despedida chido");
+        System.out.println("Hasta la proxima, sigue aprendiendo :D");
         enter.close();
     }
 }
