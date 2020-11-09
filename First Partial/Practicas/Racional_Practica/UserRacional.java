@@ -67,7 +67,7 @@ class UserRacional{
             }
         }while(!r);
     }
-    public  static void substration(Racional a, Racional b){
+    public  static void substraction(Racional a, Racional b){
         System.out.println("¿Cuál es la resta de los siguientes racionales?: ");
         a.imprimir(); System.out.print(" - "); b.imprimir();
         Racional correcta = new Racional();
@@ -154,7 +154,7 @@ class UserRacional{
                     sum(ra, rb);
                     break;
                 case 2:
-                    substration(ra, rb);
+                    substraction(ra, rb);
                     break;
                 case 3:
                     multiplication(ra, rb);
