@@ -22,7 +22,7 @@ class UserRacional{
     public static int menu()throws IOException {
         int op;
         //Runtime.getRuntime().exec("cls"); //windows
-        //Runtime.getRuntime().exec("clear"); //linux
+        Runtime.getRuntime().exec("clear"); //linux
         Scanner EntradaDeDato = new Scanner(System.in);
         do {
             System.out.println("\n\t MENÚ: ");
@@ -38,7 +38,7 @@ class UserRacional{
             op = EntradaDeDato.nextInt();    
             if(op<1 || op>6){
                 //Runtime.getRuntime().exec("cls"); //windows
-                //Runtime.getRuntime().exec("clear"); //linux
+                Runtime.getRuntime().exec("clear"); //linux
                 System.out.println("\n\n Opción no valida, ¡intente otra vez!");
             }
             
