@@ -24,9 +24,13 @@ class Tarea1{
         String b = leer.nextLine();
         if(Esprefi(a,b)){
             System.out.println("La primer cadena es prefijo de la segunda");
+        }else{
+            System.out.println("La primera cadena no es prefijo de la segunda");
         }
         if(Essufi(a,b)){
             System.out.println("La primer cadena es sufijo de la segunda");
+        }else{
+            System.out.println("La primer cadena no es sufijo de la segunda");
         }
     }
 }
