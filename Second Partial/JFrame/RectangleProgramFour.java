@@ -1,8 +1,8 @@
 // Obtenemos el contenedor de la ventana usando la clase Container
 // el contenedor nos permite acceder al area de la ventana.
-// Dividimos lógicamente la ventana en cinco renglones y dos columnas 
-// usando la clase GridLayout y pasamos la división lógica
-// al contenedor mediante el método setLayout de la clase Container 
+// Dividimos lÃ³gicamente la ventana en cinco renglones y dos columnas 
+// usando la clase GridLayout y pasamos la divisiÃ³n lÃ³gica
+// al contenedor mediante el metodo setLayout de la clase Container 
 // Agregamos etiquetas a la ventana usando la clase JLabel
 // Agregamos texto a la ventana usando la clase JTextField
 // Agregamos un boton para calcular el area y el perimetro mediante la clase JButton
