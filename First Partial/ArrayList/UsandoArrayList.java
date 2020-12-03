@@ -23,7 +23,7 @@ public class UsandoArrayList{
         System.out.println("The arraylist contains the following elements: "
                 + list);
 
-        // Checa el �ndice de "Rocinante"
+        // Checa el índice de "Rocinante"
 
         int pos = list.indexOf("Rocinante");
         int pos2 = list.indexOf("Gregorio Samsa");
@@ -36,11 +36,11 @@ public class UsandoArrayList{
 
         System.out.println("Checa si Arraylist esta vacio: " + check);
         
-		// Obtiene el tama�o del arreglo
+		// Obtiene el tamaño del arreglo
         int size = list.size();
         System.out.println("El tamamo es: " + size);
         
-       // Checa si un elemento est� incluido en el ArrayList
+       // Checa si un elemento estó incluido en el ArrayList
         boolean element = list.contains("Dracula");
         System.out.println("Existe el elemento Dracula?: " + element);
 
