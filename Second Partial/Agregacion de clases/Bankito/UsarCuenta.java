@@ -9,19 +9,19 @@ public class UsarCuenta {
             //
             Cuenta cta3 = new Cuenta();
             //Depositamos 30.5 pesos a cta1
-            cta1.saldo = cta1.saldo + 30.5;
+            cta1.depositar(30.5);
             //Depositamos 65.83 pesos a cta2
-            cta2.saldo = cta2.saldo + 65.83;
+            cta2.depositar(65.83);
             //Imprimimos los saldos de ambas cuentas
-            System.out.println("Saldo cta1 = " + cta1.saldo);
-            System.out.println("Saldo cta2 = " + cta2.saldo); 
-                        //Retiramos 500 pesos de cta1
-            cta1.saldo = cta1.saldo - 500;
+            System.out.println("Saldo cta1 = " + cta1.consultar());
+            System.out.println("Saldo cta2 = " + cta2.consultar()); 
+            //Retiramos 500 pesos de cta1
+            cta1.retirar(500);
             //Retiramos 500 pesos de cta2
-            cta2.saldo = cta2.saldo - 500;
+            cta2.retirar(500);
             //Imprimimos los saldos de ambas cuentas
-            System.out.println("Saldo cta1 = " + cta1.saldo);
-            System.out.println("Saldo cta2 = " + cta2.saldo);
-            System.out.println("Saldo cta3 = " + cta3.saldo); 
-      } // Fin de m�todo main
+            System.out.println("Saldo cta1 = " + cta1.consultar());
+            System.out.println("Saldo cta2 = " + cta2.consultar());
+            System.out.println("Saldo cta3 = " + cta3.consultar()); 
+      } // Fin de método main
 } // Fin de la clase

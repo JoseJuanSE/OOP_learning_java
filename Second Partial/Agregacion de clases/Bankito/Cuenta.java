@@ -1,6 +1,10 @@
 public class Cuenta {
         // Atributo con acceso privado
         private double saldo;
+        //constructor sin parametros
+        public Cuenta(){
+                saldo = 0;
+        }
         // Constructor: inicializa objetos de la clase Cuenta
         public Cuenta(double saldoInicial){
                 saldo = saldoInicial;

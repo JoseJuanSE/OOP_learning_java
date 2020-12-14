@@ -1,7 +1,7 @@
 public class Bankito{               
       public static void main(String [ ] args){
             Cuenta ctaAux;  
-            //Creamos el cliente �El Quijote� 
+            //Creamos el cliente ¡El Quijote!
             // con un num. de cuenta: QX400
             Cliente qx = new Cliente ("El Quijote", "QX400");
             //Creamos  su cuenta con saldo de 550.45
@@ -22,13 +22,13 @@ public class Bankito{
             //double valor = qx.cuenta.consultar(); //Error: cuenta tiene acceso privado para Bankito
             //System.out.println("Saldo :" + valor);
             
-            //Segunda opci�n:
-            //Usando los m�todos de la clse Cliente y de la clase Cuenta:
+            //Segunda opción:
+            //Usando los métodos de la clse Cliente y de la clase Cuenta:
             //System.out.println("Saldo =" + qx.obtenerCuenta().consultar());
             
-            //Tercera opci�n:
-            //Agregando el m�todo consultarCuenta( ) en la clase Cliente para tener acceso al atributo saldo:
+            //Tercera opción:
+            //Agregando el método consultarCuenta( ) en la clase Cliente para tener acceso al atributo saldo:
             double monto = qx.consultarCuenta();
             System.out.println("Saldo (usando consultarCuenta):" + monto);
-      } // Fin de m�todo main
+      } // Fin de método main
 } // Fin de la clase
