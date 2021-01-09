@@ -23,7 +23,7 @@ La declaración del constructor es tipo private debido a que se limita la creaci
 
 */
 
- enum Equipo
+enum Equipo
 {
 	BARCA("FC Barcelona",1), REAL_MADRID("Real Madrid",2),    //BARCA = BARÇA
 	SEVILLA("Sevilla FC",4), VILLAREAL("Villareal",7); 
@@ -50,16 +50,16 @@ La declaración del constructor es tipo private debido a que se limita la creaci
 Como se ve BARÇA, REAL_MADRID, etc. son el nombre del enumerado (u objetos de la clase Equipo) que tendrán como atributos 
 el "nombreClub" y "puestoLiga". Como se ve en la clase definimos un constructor que es privado (es decir que solo es visible 
 dentro de la clase Equipo) y solo definimos los métodos "getters". Para trabajar con los atributos de estos enumerados se hace de
- la misma manera que con cualquier otro objeto; se instancia un objeto (sin usar el operador new)y se accede a los atributos con 
- los métodos "getter". 
+la misma manera que con cualquier otro objeto; se instancia un objeto (sin usar el operador new)y se accede a los atributos con 
+los métodos "getter". 
  */
 
 
 /*
 El siguiente ejemplo utiiza los dos enumerados anteriores (Demarcación y Equipo). Vamos a crear 
- algunos objetos de la clase Futbolista, que representarán a los jugadores de la selección española de fútbol que ganaron el mundial de 
- fútbol de Sudáfrica en el año 2010. Esta clase va a caracterizar a los futbolistas por su nombre, su dorsal (número), la demarcación en la que 
- juegan y el club de fútbol al que pertenecen.
+algunos objetos de la clase Futbolista, que representarán a los jugadores de la selección española de fútbol que ganaron el mundial de 
+fútbol de Sudáfrica en el año 2010. Esta clase va a caracterizar a los futbolistas por su nombre, su dorsal (número), la demarcación en la que 
+juegan y el club de fútbol al que pertenecen.
 */
 
 public class Futbolista 
@@ -94,10 +94,11 @@ public class Futbolista
     Dada esta clase podemos crearnos ya objetos de la clase futbolista, como mostramos a continuación:
     */
     public static void main(String [] args)
-	  {
+	{
 		//Usando el Enum Demarcacion  
 		Demarcacion delantero = Demarcacion.DELANTERO;    // Instancia de un enum de la clase Demarcación
 		Demarcacion defensa = Demarcacion.DEFENSA;
+		Demarcacion portero = Demarcacion.PORTERO;
 		
 		// Devuelve un String con el nombre de la constante (DELANTERO)
 		System.out.println("delantero.name(): " + delantero.name());
@@ -109,8 +110,7 @@ public class Futbolista
 		System.out.println("delantero.compareTo(defensa): " + delantero.compareTo(defensa));
 		 // Devuelve un array que contiene todos los enum
 		System.out.println("Usando el metodo Demarcacion.values(): ");    
-		 Demarcacion arr[] = Demarcacion.values(); 
-  
+		Demarcacion arr[] = Demarcacion.values(); 
         // Desplegando el valor del arreglo 
         for (Demarcacion dem : arr) 
         { 
@@ -129,15 +129,13 @@ public class Futbolista
 		System.out.println("delantero.ordinal()= "+delantero.ordinal());
 		
 		// Compara el enum con el parámetro según el orden en el que están declaradas las constantes. 
-		System.out.println("delantero.compareTo(portero)= "+delantero.compareTo(defensa));
+		System.out.println("delantero.compareTo(portero)= "+delantero.compareTo(portero));
 		System.out.println("delantero.compareTo(delantero)= "+delantero.compareTo(delantero));
 		
 		// Recorre todas las constantes de la enumeración
 		for(Demarcacion d: Demarcacion.values()){
 			System.out.println(d.toString()+" - ");
 		}
-  
-  
 		// Usando el Enum Equipo
 		// Instanciamos el enumerado
 		Equipo villareal = Equipo.VILLAREAL;
@@ -149,19 +147,19 @@ public class Futbolista
 		System.out.println("villareal.getNombreClub()= "+villareal.getNombreClub());
 		System.out.println("villareal.getPuestoLiga()= "+villareal.getPuestoLiga());
 	
-       Futbolista casillas = new Futbolista("Casillas", 1, Demarcacion.PORTERO, Equipo.REAL_MADRID);
-       Futbolista capdevila = new Futbolista("Capdevila", 11, Demarcacion.DEFENSA, Equipo.VILLAREAL);
-       Futbolista iniesta = new Futbolista("Iniesta", 6, Demarcacion.CENTROCAMPISTA, Equipo.BARCA);  //BARÇA
-       Futbolista navas = new Futbolista("Navas", 22, Demarcacion.DELANTERO, Equipo.SEVILLA);
+		Futbolista casillas = new Futbolista("Casillas", 1, Demarcacion.PORTERO, Equipo.REAL_MADRID);
+		Futbolista capdevila = new Futbolista("Capdevila", 11, Demarcacion.DEFENSA, Equipo.VILLAREAL);
+		Futbolista iniesta = new Futbolista("Iniesta", 6, Demarcacion.CENTROCAMPISTA, Equipo.BARCA);  //BARÇA
+		Futbolista navas = new Futbolista("Navas", 22, Demarcacion.DELANTERO, Equipo.SEVILLA);
 
-       /* Como vemos la demarcación y el equipo al que pertenecen solo pueden ser los declarados en la clase enumerado. 
-          Si llamamos al método "toString()" declarado en la clase Futbolista, podemos imprimir por pantalla los datos de 
-          los futbolistas. Dado el siguiente código:
-       */
-	   System.out.println("\nFutbolistas de la seleccin de Espana Campeon mundial en 2010 en Sudafrica:");
-       System.out.println(casillas.toString());
-       System.out.println(capdevila.toString());
-       System.out.println(iniesta.toString());
-       System.out.println(navas.toString());
-      }
- }
+		/* Como vemos la demarcación y el equipo al que pertenecen solo pueden ser los declarados en la clase enumerado. 
+			Si llamamos al método "toString()" declarado en la clase Futbolista, podemos imprimir por pantalla los datos de 
+			los futbolistas. Dado el siguiente código:
+		*/
+		System.out.println("\nFutbolistas de la seleccin de Espana Campeon mundial en 2010 en Sudafrica:");
+		System.out.println(casillas.toString());
+		System.out.println(capdevila.toString());
+		System.out.println(iniesta.toString());
+		System.out.println(navas.toString());
+	}
+}

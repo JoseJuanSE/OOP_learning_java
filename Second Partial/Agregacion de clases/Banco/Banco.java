@@ -1,5 +1,5 @@
 public class Banco {
-	private Cliente[ ] clientes;
+	private Cliente[] clientes;
 	private int numClientes;
 	
 	public Banco(){ 
@@ -31,15 +31,11 @@ public class Banco {
 	public void imprimirClientes(){
 		Cliente auxCliente;
 		Cuenta auxCuenta;
-			for(int i=0; i<numClientes; i++){
-				auxCliente = obtenerCliente(i);
-				System.out.print("Cliente [" + i + "] =" + auxCliente.obtenerNombre());
-				auxCuenta = auxCliente.obtenerCuenta();
-				System.out.println(" Saldo:" + auxCuenta.consultar());
-				 
-			}
-			
+		for(int i=0; i<numClientes; i++){
+			auxCliente = obtenerCliente(i);
+			System.out.print("Cliente [" + i + "] =" + auxCliente.obtenerNombre());
+			auxCuenta = auxCliente.obtenerCuenta();
+			System.out.println(" Saldo:" + auxCuenta.consultar());
 		}
-		
-		
+	}
 }

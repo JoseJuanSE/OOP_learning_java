@@ -30,6 +30,4 @@ public class UsarCuenta
 		System.out.println("La cuenta se cierra, adios lana!! " + nuevaCuenta.getSaldo());
 		*/
 	}
-
-
 }

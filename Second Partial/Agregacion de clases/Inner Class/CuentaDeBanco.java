@@ -2,7 +2,6 @@ public class CuentaDeBanco
 {
 	long dollars;
 	private int cents;
-	
 	// Clase interna
 	// ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 	private class Efectivo       //Si el tipo de acceso cambia a public se pueden crear objetos en la clase usuaria
@@ -59,35 +58,30 @@ public class CuentaDeBanco
 		}
 	 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++	
    } //Fin de la clase interna
-  
-  private Efectivo saldo;
-  
-  public CuentaDeBanco()
-  {
+	private Efectivo saldo;
+	
+	public CuentaDeBanco(){
+		/*Para invocar un método no estático de la clase interna 
+		desde la clase externa, se requiere crear un objeto
+      	de la clase interna. */	
+		saldo = new Efectivo("0.00");  
+	}
+	
+	public String getSaldo(){
 	/*Para invocar un método no estático de la clase interna 
-      desde la clase externa, se requiere crear un objeto
-      de la clase interna. */	
-	saldo = new Efectivo("0.00");  
-  }
-  
-  public String getSaldo()
-  {
-	/*Para invocar un método no estático de la clase interna 
-      desde la clase externa, se requiere crear un objeto
-      de la clase interna. */
-	return saldo.getMonto(); // Este método es accesible aún si es privado  
-  }
-  
-  public void hacerDeposito(String depositarMonto)
-  {
-	saldo.agregar(new Efectivo(depositarMonto));
-  }
-  	
-  public void cerrarCuenta()
-  {
+		desde la clase externa, se requiere crear un objeto
+      	de la clase interna. */
+		return saldo.getMonto(); // Este método es accesible aún si es privado  	
+	}
+
+	public void hacerDeposito(String depositarMonto){
+		saldo.agregar(new Efectivo(depositarMonto));
+	}
+
+	public void cerrarCuenta(){
 	  //La clase externa tiene acceso a las variables de instancia 
 	  // privadas de la clase interna.
-	  saldo.dollars = 0;
-	  saldo.cents = 0;
-  }	
+		saldo.dollars = 0;
+		saldo.cents = 0;
+	}	
 }
