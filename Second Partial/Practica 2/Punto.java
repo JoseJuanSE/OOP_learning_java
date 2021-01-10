@@ -14,6 +14,11 @@ public class Punto {
         x=a;
         y=b;
     }
+    public Punto(Punto p){
+        name = p.name;
+        x=p.x;
+        y=p.y;
+    }
     int obtenerX(){
         return x;
     }
