@@ -1,7 +1,20 @@
 public class Rectangulo {
     private String name;
     private Punto a,b;
-    public Rectangulo(String n,String an,Strign bn,int ax,int ay,int bx,int by){
+    //-----funciones auxiliares-----
+    static void swap(int a,int b){
+        int aux = a;
+        a=b;
+        b=aux;
+    }
+    static int max(int a,int b){
+        return a>b?a:b;
+    }
+    static int min(int a,int b){
+        return a<b?a:b;
+    }
+    //------------------------------
+    public Rectangulo(String n,String an,String bn,int ax,int ay,int bx,int by){
         if(ax==bx || ay==by){
             System.out.println("Rectangulo invalido...");
             a = new Punto("-1",0,0);
@@ -26,22 +39,31 @@ public class Rectangulo {
         }
     }
     public Rectangulo(String n,int ax,int ay,int bx,int by){
-        Rectangulo(n,"iz","de",ax,ay,bx,by);
+        this(n,"iz","de",ax,ay,bx,by);
     }
     public Rectangulo(String n,Punto a1,Punto b1){
-        Rectangulo(n,a1.x,a1.y,b1.x,b1.y);
+        this(n,a1.obtenerX(),a1.obtenerY(),b1.obtenerX(),b1.obtenerY());
     }
-    public Rectangulo(string x){
-        Rectangulo(x,0,0,1,1);
+    public Rectangulo(String x){
+        this(x,0,0,1,1);
     }
     public Rectangulo(){
-        Rectangulo("r1");
+        this("r1");
     }
     public Rectangulo(Rectangulo r){
-        Rectangulo(r.name,r.a,r.b);
+        this(r.obtenerNombre(),r.a,r.b);
+    }
+    public String obtenerNombre(){
+        return name;
+    }
+    public Punto obtenerP1(){
+        return a;
+    }
+    public Punto obtenerP2(){
+        return b;
     }
     public Rectangulo Union(Rectangulo o){
-        Rectangulo ans = new Rectangulo("U1",Point(min(x,o.a.obtenerX()),min(y,o.a.obtenerY())),Point(max(x,o.b.obtenerX()),max(y,o.b.obtenerY())));
+        Rectangulo ans = new Rectangulo("U1",min(a.obtenerX(),o.a.obtenerX()),min(a.obtenerY(),o.a.obtenerY()),max(b.obtenerX(),o.b.obtenerX()),max(b.obtenerY(),o.b.obtenerY()));
         return ans;
     }
     public double Area(){
@@ -63,25 +85,19 @@ public class Rectangulo {
         int thby = this.b.obtenerY();
         return thax<=px && thay<=py && thbx>=px && thby>=py; 
     }
-    public boolean estaAdentro(Rectangulo o){
-        return this.puntodentro(o.a) && this.puntodentro(o.b);
+    public boolean estaAdentro(Rectangulo o){// this fuera, o dentro
+        return this.puntodentro(o.a ) && this.puntodentro(o.b);
     }
     public Rectangulo empty(){
-        return rectangulo("vacio");
+        return new Rectangulo("vacio");
     }
     public Rectangulo Interseccion(Rectangulo o){
-        if(this.estaAdentro(o))return o;
+        if(this.estaAdentro(o))return o; 
         if(o.estaAdentro(this))return this;
-        /*Siempre:
-            a1******a2
-            *       *
-            *       * 
-            a3******a4
-        */
-        Point a3 = o.a;
-        Point a2 = o.b;
-        Point a1 = new Point(a3.obtenerX(),a2.obtenerY());
-        Point a4 = new Point(a2.obtenerX(),a3.obtenerY());
+        Punto a3 = o.a;
+        Punto a2 = o.b;
+        Punto a1 = new Punto("a1",a3.obtenerX(),a2.obtenerY());
+        Punto a4 = new Punto("a4",a2.obtenerX(),a3.obtenerY());
         
         boolean a1d = this.puntodentro(a1);
         boolean a2d = this.puntodentro(a2);
@@ -89,22 +105,28 @@ public class Rectangulo {
         boolean a4d = this.puntodentro(a4);
         Rectangulo res = new Rectangulo();
         res = empty();
+        /*Siempre:
+            a1******a2
+            *       *
+            *       * 
+            a3******a4
+        */
         if(a1d && a2d){
-            res = Rectangulo("res");
+            res = new Rectangulo("res",a1.obtenerX(),this.a.obtenerY(),a2.obtenerX(),a2.obtenerY());
         }else if(a2d && a4d){
-
+            res = new Rectangulo("res",this.a.obtenerX(),a4.obtenerY(),a2.obtenerX(),a2.obtenerY());
         }else if(a4d && a3d){
-
+            res = new Rectangulo("res",a3.obtenerX(),a3.obtenerY(),a4.obtenerX(),this.b.obtenerY());
         }else if(a3d && a1d){
-
+            res = new Rectangulo("res",a3.obtenerX(),a3.obtenerY(),this.b.obtenerX(),a2.obtenerY());
         }else if(a1d){
-
+            res = new Rectangulo("res",a1.obtenerX(),a1.obtenerY(),this.b.obtenerX(),this.a.obtenerY());
         }else if(a2d){
-
+            res = new Rectangulo("res",this.a.obtenerX(),this.a.obtenerY(),a2.obtenerX(),a2.obtenerY());
         }else if(a3d){
-
+            res = new Rectangulo("res",a3.obtenerX(),a3.obtenerY(),this.b.obtenerX(),this.b.obtenerY());
         }else if(a4d){
-
+            res = new Rectangulo("res",this.a.obtenerX(),this.b.obtenerY(),a4.obtenerX(),a4.obtenerY());
         }
         if(res.obtenerNombre()=="vacio")
             System.out.println("No hay intersección");
@@ -116,10 +138,10 @@ public class Rectangulo {
         this.b=b;
     }
     public int cuadRect(){
-        Punto aux = new Punto(a.obtenerX(),b.obtenerY());
+        Punto aux = new Punto("Rect1",a.obtenerX(),b.obtenerY());
         return aux.cuadrante();
     }
     public String toString(){
-        return name+": ["+toString(a)+","+toString(b)+")]";
+        return name+": ["+a+","+b+")]";
     }
 }
