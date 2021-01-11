@@ -1,6 +1,7 @@
 public class Punto {
     private int x,y;
     private String name;
+    //--------contructores-----------
     public Punto(){
         x = y = 0;
         name = "P1";
@@ -19,6 +20,7 @@ public class Punto {
         x=p.x;
         y=p.y;
     }
+    //--------------------------------
     int obtenerX(){
         return x;
     }
@@ -36,11 +38,6 @@ public class Punto {
     }
     public void CambiarNombre(String a){
         name = a;
-    }
-    public void establece(String g,int a,int b){
-        name = g;
-        x=a;
-        y=b;
     }
     public String toString(){
         return name+"("+x+","+y+")";

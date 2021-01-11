@@ -1,4 +1,4 @@
-public class Rectangulo {
+public class Rectangulo{
     private String name;
     private Punto a,b;
     //-----funciones auxiliares-----
@@ -14,9 +14,10 @@ public class Rectangulo {
         return a<b?a:b;
     }
     //------------------------------
+    //---------constructores--------
     public Rectangulo(String n,String an,String bn,int ax,int ay,int bx,int by){
         if(ax==bx || ay==by){
-            System.out.println("Rectangulo invalido...");
+            System.out.println(n + " es un rectangulo invalido...");
             a = new Punto("-1",0,0);
             b = new Punto("-1",0,0);
             name = "invalido";
@@ -53,6 +54,8 @@ public class Rectangulo {
     public Rectangulo(Rectangulo r){
         this(r.obtenerNombre(),r.a,r.b);
     }
+    //-----------------------------
+    //setters y getters
     public String obtenerNombre(){
         return name;
     }
@@ -62,6 +65,44 @@ public class Rectangulo {
     public Punto obtenerP2(){
         return b;
     }
+    public void cambiarNombre(String x){
+        name = x;
+    }
+    public void cambiarP1(Punto x){
+        if(x.obtenerX()==a.obtenerX() || x.obtenerY()==a.obtenerY()){
+            System.out.println("Este cambio no genera un rectangulo...");
+            return ;
+        }
+        a=x;
+        int ax = a.obtenerX(),ay=a.obtenerY();
+        int bx = b.obtenerX(),by=b.obtenerY();
+        if(ax>bx){
+            swap(ax,bx);
+        }
+        if(ay>by){
+            swap(ay,by);
+        }
+        a = new Punto("iz",ax,ay);
+        b = new Punto("de",bx,by);
+    }
+    public void cambiarP2(Punto x){
+        if(x.obtenerX()==b.obtenerX() || x.obtenerY()==b.obtenerY()){
+            System.out.println("Este cambio no genera un rectangulo...");
+            return ;
+        }
+        b=x;
+        int ax = a.obtenerX(),ay=a.obtenerY();
+        int bx = b.obtenerX(),by=b.obtenerY();
+        if(ax>bx){
+            swap(ax,bx);
+        }
+        if(ay>by){
+            swap(ay,by);
+        }
+        a = new Punto("iz",ax,ay);
+        b = new Punto("de",bx,by);
+    }
+    //-------------------
     public Rectangulo Union(Rectangulo o){
         Rectangulo ans = new Rectangulo("U1",min(a.obtenerX(),o.a.obtenerX()),min(a.obtenerY(),o.a.obtenerY()),max(b.obtenerX(),o.b.obtenerX()),max(b.obtenerY(),o.b.obtenerY()));
         return ans;
@@ -70,6 +111,13 @@ public class Rectangulo {
         return (b.obtenerX()-a.obtenerX())*(b.obtenerY()-a.obtenerY());
     }
     public int comparar(Rectangulo o){
+        double a1=this.Area();
+        double a2=o.Area();
+        if(a1<a2)return -1;
+        if(a1==a2)return 0;
+        return 1;
+    }
+    public int comparar(Triangulo o){
         double a1=this.Area();
         double a2=o.Area();
         if(a1<a2)return -1;
