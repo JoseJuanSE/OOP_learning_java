@@ -1,4 +1,4 @@
-public class Prueba {
+public class Usuario {
     public static void main(String[] args) {
         //probando punto
         Punto a = new Punto("Q",1,3);
@@ -25,7 +25,7 @@ public class Prueba {
         Punto b2 = new Punto("b2",-4,6);
         Rectangulo y = new Rectangulo("RecA",a2,b2);
         Rectangulo prueba = new Rectangulo("prueba",0,0,0,0);
-        System.out.println("el area del rectangulo " + x + " es: "+x.Area());
+        System.out.println("el area del rectangulo " + x + " es: "+x.area());
 
         Rectangulo unionxy = x.Union(y);
         Rectangulo interxy = x.Interseccion(y);

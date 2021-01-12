@@ -3,7 +3,7 @@ public class Triangulo {
     private String name;
 
     //--------auxiliares-----------
-    static bool esTriangulo(int ax,int ay,int bx,int by,int cx,int cy){
+    static boolean esTriangulo(int ax,int ay,int bx,int by,int cx,int cy){
         Punto a_1 = new Punto("a1",ax,ay);
         Punto b_1 = new Punto("b1",bx,by);
         Punto c_1 = new Punto("c1",cx,cy);
@@ -20,7 +20,7 @@ public class Triangulo {
     //-----------------------------
     //-------Constructores---------
     public Triangulo(String n,String an,String bn,String cn,int ax,int ay,int bx,int by,int cx,int cy){
-        name = x;
+        name = n;
         if(!esTriangulo(ax,ay,bx,by,cx,cy)){
             System.out.println("Los puntos dados no forman un triangulo...");
         }else{
@@ -82,38 +82,71 @@ public class Triangulo {
         }
     }
     public void cambiarNombre(String n){
-        Name = n;
+        name = n;
     }
     //-----------------------------
-    public Triangulo union(Triangulo o){
-
-    }
-    
-    public Triangulo intereseccion(Triangulo o){
-
-    }
-    
     public double area(){
         double l1 = a.distancia(b);
         double l2 = a.distancia(c);
         double l3 = b.distancia(c);
         // como no sabemos el tipo de triangulo, tenemos que sacar el area con la formula de Heron.
-        double sp = (l1+l2l+l3)/2;
+        double sp = (l1+l2+l3)/2;
         return Math.sqrt(sp*(sp-l1)*(sp-l2)*(sp-l3));
     }
+    static boolean puntoDentro(Triangulo af,Punto d){
+        /*un punto esta dentro de un triangulo, sí y solo sí, 
+            al tener un triangulo: 
+              a
+             / \     *d
+            b---c
+            y un punto d, entonces podemos trazar un triangulo con los puntos b,c,d
+            otro con los puntos a,c,d
+            y otro con los puntos a,b,d
+            si el punto d, esta dentro del triangulo, la suma de las areas de los 3 triangulos anteriormente mencionadas
+            debe ser igual a el area del triangulo a,b,c.
+            Entonces llegamos a la conclusion de que sí.
+            t = (a,b,c)
+            y
+            t1 = (a,b,d)
+            t2 = (a,c,d)
+            t3 = (b,c,d)
+            entonces:
+            d esta dentro del triangulo sí:
+            area(t1)+area(t2)+area(t3) = area(t4).
+            de otra forma d esta fuera.
+            Nota: si continuamos el analisis podemos notar que cuando d esta fuera
+            siempre :
+            area(t1)+area(t2)+area(t3) > area(t4)
+        */
+        Triangulo t1 = new Triangulo("t1",af.a,af.b,d);
+        Triangulo t2 = new Triangulo("t2",af.a,af.c,d);
+        Triangulo t3 = new Triangulo("t3",af.b,af.c,d);
+        return t1.area() + t2.area() + t3.area() == af.area();
+    }
+    static boolean estaDentroDe(Triangulo adentro,Triangulo afuera){
+        //un triangulo esta dentro de otro si todos los puntos de un triangulo estan dentro del otro
+        return puntoDentro(afuera,adentro.a) && puntoDentro(afuera,adentro.b) && puntoDentro(afuera,adentro.c);
+    }
+    public Triangulo intereseccion(Triangulo o){
+        //por simplicidad solo veamos el caso base, si esta el triangulo o no dentro
+        //si hay un triangulo dentro de otro entonces el que esta dentro es la interseccion.
+        if(estaDentroDe(this,o))return this;
+        if(estaDentroDe(o,this))return o;
+        //en otro caso
+        return null;
+    }
     public int comparar(Rectangulo o){
-        double a1=this.Area();
-        double a2=o.Area();
+        double a1=this.area();
+        double a2=o.area();
         if(a1<a2)return -1;
         if(a1==a2)return 0;
         return 1;
     }
     public int comparar(Triangulo o){
-        double a1=this.Area();
-        double a2=o.Area();
+        double a1=this.area();
+        double a2=o.area();
         if(a1<a2)return -1;
         if(a1==a2)return 0;
         return 1;
     }
-    
 }

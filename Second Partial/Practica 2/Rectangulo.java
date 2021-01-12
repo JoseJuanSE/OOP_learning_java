@@ -107,19 +107,19 @@ public class Rectangulo{
         Rectangulo ans = new Rectangulo("U1",min(a.obtenerX(),o.a.obtenerX()),min(a.obtenerY(),o.a.obtenerY()),max(b.obtenerX(),o.b.obtenerX()),max(b.obtenerY(),o.b.obtenerY()));
         return ans;
     }
-    public double Area(){
+    public double area(){
         return (b.obtenerX()-a.obtenerX())*(b.obtenerY()-a.obtenerY());
     }
     public int comparar(Rectangulo o){
-        double a1=this.Area();
-        double a2=o.Area();
+        double a1=this.area();
+        double a2=o.area();
         if(a1<a2)return -1;
         if(a1==a2)return 0;
         return 1;
     }
     public int comparar(Triangulo o){
-        double a1=this.Area();
-        double a2=o.Area();
+        double a1=this.area();
+        double a2=o.area();
         if(a1<a2)return -1;
         if(a1==a2)return 0;
         return 1;
