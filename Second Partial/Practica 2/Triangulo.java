@@ -17,6 +17,10 @@ public class Triangulo {
         double lado3 = b_1.distancia(c_1);
         return lado1+lado2>lado3 && lado1+lado3>lado2 && lado2+lado3>lado1;
     }
+    static double abs(double x){
+        if(x<0)return -1*x;
+        return x;
+    }
     //-----------------------------
     //-------Constructores---------
     public Triangulo(String n,String an,String bn,String cn,int ax,int ay,int bx,int by,int cx,int cy){
@@ -121,7 +125,8 @@ public class Triangulo {
         Triangulo t1 = new Triangulo("t1",af.a,af.b,d);
         Triangulo t2 = new Triangulo("t2",af.a,af.c,d);
         Triangulo t3 = new Triangulo("t3",af.b,af.c,d);
-        return t1.area() + t2.area() + t3.area() == af.area();
+        //consideremos el margen de error en los calculos de double
+        return abs (t1.area() + t2.area() + t3.area() -af.area()) < 0.005;
     }
     static boolean estaDentroDe(Triangulo adentro,Triangulo afuera){
         //un triangulo esta dentro de otro si todos los puntos de un triangulo estan dentro del otro
@@ -133,6 +138,7 @@ public class Triangulo {
         if(estaDentroDe(this,o))return this;
         if(estaDentroDe(o,this))return o;
         //en otro caso
+        System.out.println("No hay interseccion...");
         return null;
     }
     public int comparar(Rectangulo o){
@@ -148,5 +154,8 @@ public class Triangulo {
         if(a1<a2)return -1;
         if(a1==a2)return 0;
         return 1;
+    }
+    public String toString(){
+        return name+"["+a+","+b+","+c+"]";
     }
 }

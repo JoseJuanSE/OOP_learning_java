@@ -2,11 +2,6 @@ public class Rectangulo{
     private String name;
     private Punto a,b;
     //-----funciones auxiliares-----
-    static void swap(int a,int b){
-        int aux = a;
-        a=b;
-        b=aux;
-    }
     static int max(int a,int b){
         return a>b?a:b;
     }
@@ -23,10 +18,14 @@ public class Rectangulo{
             name = "invalido";
         }else{
             if(ax>bx){
-                swap(ax,bx);
+                int aux = ax;
+                ax = bx;
+                bx = aux;
             }
             if(ay>by){
-                swap(ay,by);
+                int aux = ay;
+                ay = by;
+                by = aux;
             }
             a = new Punto(an,ax,ay);
             b = new Punto(bn,bx,by);
@@ -73,14 +72,18 @@ public class Rectangulo{
             System.out.println("Este cambio no genera un rectangulo...");
             return ;
         }
-        a=x;
+        this.a=x;
         int ax = a.obtenerX(),ay=a.obtenerY();
         int bx = b.obtenerX(),by=b.obtenerY();
         if(ax>bx){
-            swap(ax,bx);
+            int aux = ax;
+            ax = bx;
+            bx = aux;
         }
         if(ay>by){
-            swap(ay,by);
+            int aux = ay;
+            ay = by;
+            by = aux;
         }
         a = new Punto("iz",ax,ay);
         b = new Punto("de",bx,by);
@@ -90,16 +93,20 @@ public class Rectangulo{
             System.out.println("Este cambio no genera un rectangulo...");
             return ;
         }
-        b=x;
+        this.b=x;
         int ax = a.obtenerX(),ay=a.obtenerY();
         int bx = b.obtenerX(),by=b.obtenerY();
         if(ax>bx){
-            swap(ax,bx);
+            int aux = ax;
+            ax = bx;
+            bx = aux;
         }
         if(ay>by){
-            swap(ay,by);
+            int aux = ay;
+            ay = by;
+            by = aux;
         }
-        a = new Punto("iz",ax,ay);
+        this.a = new Punto("iz",ax,ay);
         b = new Punto("de",bx,by);
     }
     //-------------------
@@ -139,7 +146,7 @@ public class Rectangulo{
     public Rectangulo empty(){
         return new Rectangulo("vacio");
     }
-    public Rectangulo Interseccion(Rectangulo o){
+    public Rectangulo InterseccionUtil(Rectangulo o){
         if(this.estaAdentro(o))return o; 
         if(o.estaAdentro(this))return this;
         Punto a3 = o.a;
@@ -176,14 +183,22 @@ public class Rectangulo{
         }else if(a4d){
             res = new Rectangulo("res",this.a.obtenerX(),this.b.obtenerY(),a4.obtenerX(),a4.obtenerY());
         }
-        if(res.obtenerNombre()=="vacio")
-            System.out.println("No hay intersección");
         return res;
+    }
+    public Rectangulo Interseccion(Rectangulo o){
+        //vemos si es que hay interseccion cual es el que se mete en el otro.
+        Rectangulo res1 = this.InterseccionUtil(o);
+        Rectangulo res2 = o.InterseccionUtil(this);
+        if(res1.obtenerNombre()!="vacio")return res1;
+        if(res2.obtenerNombre()=="vacio")
+            System.out.println("No hay intersección...");
+        return res2;
     }
     public void moverRect(Punto a,Punto b){
         Rectangulo aux = new Rectangulo("aux",a,b);
-        this.a=a;
-        this.b=b;
+        // se mandan por el constructor para que se estandaricen (esquina inferior izq primero, opuesta segundo)
+        this.a=aux.a;
+        this.b=aux.b;
     }
     public int cuadRect(){
         Punto aux = new Punto("Rect1",a.obtenerX(),b.obtenerY());

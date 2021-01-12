@@ -36,6 +36,10 @@ public class Punto {
     public void CambiaY(int a){
         y=a;
     }
+    public void Cambia(int a,int b){
+        x=a;
+        y=b;
+    }
     public void CambiarNombre(String a){
         name = a;
     }
