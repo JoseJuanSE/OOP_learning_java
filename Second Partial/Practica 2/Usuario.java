@@ -1,6 +1,9 @@
 public class Usuario {
     public static void main(String[] args) {
         //probando punto
+        System.out.println("Integrantes de equipo: ");
+        System.out.println("Acosta Flores Pablo");
+        System.out.println("Suarez Elizalde Jose Juan");
         System.out.println("PROBEMOS PUNTO");
         Punto a = new Punto("Q",1,3);
         Punto b = new Punto();
